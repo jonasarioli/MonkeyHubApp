@@ -12,7 +12,7 @@ namespace MonkeyHubApp.ViewModels
             set { SetProperty(ref _searchTerm, value); }
         }
 
-        ICommand 
+        // ICommand 
 
     }
 }
