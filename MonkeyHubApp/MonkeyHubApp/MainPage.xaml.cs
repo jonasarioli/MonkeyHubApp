@@ -1,4 +1,6 @@
-﻿using MonkeyHubApp.ViewModels;
+﻿using MonkeyHubApp.Models;
+using MonkeyHubApp.Services;
+using MonkeyHubApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,13 @@ namespace MonkeyHubApp
         {
             InitializeComponent();
 
-            BindingContext = new MainViewModel();
+            BindingContext = new MainViewModel(new MonkeyHubApiService());
+        }
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var tag = (sender as ListView)?.SelectedItem as Tag;
+            (BindingContext as MainViewModel).ShowCategoriaCommand.Execute(tag);
         }
     }
 }
